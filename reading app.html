@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Reading App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-react@latest/umd/lucide-react.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-bottom: 180px; /* Increased padding to accommodate exit button */
+            position: relative;
+        }
+
+        .phone {
+            width: 320px;
+            height: 568px;
+            border: 2px solid #000;
+            border-radius: 28px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .screen {
+            width: 100%;
+            height: 80%;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .top-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .speaker {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 2px;
+        }
+
+        .front-camera {
+            position: absolute;
+            top: 8px;
+            left: 30%;
+            width: 8px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 50%;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 5px;
+            background-color: #333;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+
+        .title-marquee-container {
+            position: absolute;
+            top: 15%;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .title-marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 10s linear infinite;
+            font-size: 20px;
+            color: #222;
+            font-weight: 700;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .content-marquee-container {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .content-marquee-content {
+            animation: scroll-up 20s linear infinite;
+            font-size: 16px;
+            color: #444;
+            white-space: pre-line;
+            text-align: center;
+            padding-top: 100%;
+        }
+
+        @keyframes scroll-up {
+            0% { transform: translateY(0%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        .play-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 123, 255, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .side-buttons {
+            position: absolute;
+            top: 30%;
+            left: -10px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .side-button {
+            width: 4px;
+            height: 40px;
+            background-color: #888;
+            border-radius: 2px;
+        }
+
+        .search-bar-container {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 200px;
+            height: 40px;
+            z-index: 100;
+        }
+
+        .search-bar {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .search-bar svg {
+            margin-right: 8px;
+            color: #666;
+        }
+
+        .book-section {
+            position: absolute;
+            top: 70px;
+            left: 10px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+            z-index: 100;
+        }
+
+        .book-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .book-cover {
+            width: 80px;
+            height: 120px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .app-title {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            z-index: 100;
+        }
+
+        .red-button {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: red;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .exit-button {
+            position: fixed;
+            top: 60%; /* Positioned below the red button */
+            right: 20px;
+            width: 100px; /* Increased width for the text */
+            height: 30px;
+            border-radius: 15px; /* Fully rounded corners */
+            background-color: #555; /* Darker background color */
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    <h1 class="app-title">
+        Amun-Ra reads for you
+    </h1>
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search for books...">
+        </div>
+    </div>
+
+    <div class="book-section">
+        <div class="book-row">
+            <div class="book-cover">
+                <img src="https://placehold.co/80x120/EEE/31343C" alt="25 Girls">
+                <p>25 Girls</p>
+            </div>
+            <div class="book-cover">
+                 <img src="https://placehold.co/80x120/EEE/31343C" alt="The Full Circle">
+                <p>The Full Circle</p>
+            </div>
+        </div>
+        <div class="book-row">
+            <div class="book-cover">
+                 <img src="https://placehold.co/80x120/EEE/31343C" alt="Bright">
+                <p>Bright</p>
+            </div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="phone">
+        <div class="screen">
+            <div class="top-notch">
+                <div class="speaker"></div>
+                <div class="front-camera"></div>
+            </div>
+
+            <div class="title-marquee-container">
+                <div class="title-marquee-content">
+                    The Book Title
+                </div>
+            </div>
+            <div class="content-marquee-container">
+                <div class="content-marquee-content" id="textContent">
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                    The quick brown fox jumps over the lazy dog. A journey through words, floating in time.
+                </div>
+            </div>
+            <div class="bottom-bar"></div>
+            <div class="play-button" onclick="toggleAudio()">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+            </div>
+        </div>
+        <div class="side-buttons">
+            <div class="side-button"></div>
+            <div class="side-button"></div>
+            <div class="side-button"></div>
+        </div>
+    </div>
+
+    <div class="red-button" onclick="startRecording()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+            <circle cx="12" cy="12" r="10"></circle>
+        </svg>
+    </div>
+    <div class="exit-button" onclick="exitApp()">Exit App</div>
+
+    <script>
+        let isPlaying = false;
+        let speechSynthesisUtterance;
+        let mediaRecorder;
+        let audioChunks = [];
+
+        function toggleAudio() {
+            const textContent = document.getElementById('textContent').innerText;
+            if (!speechSynthesisUtterance) {
+                speechSynthesisUtterance = new SpeechSynthesisUtterance(textContent);
+                speechSynthesisUtterance.onend = () => {
+                    isPlaying = false;
+                    updatePlayButtonIcon();
+                };
+            }
+
+            if (isPlaying) {
+                speechSynthesis.pause();
+                isPlaying = false;
+                updatePlayButtonIcon();
+            } else {
+                speechSynthesis.resume();
+                if (speechSynthesis.paused || speechSynthesis.speaking) {
+                    speechSynthesis.resume();
+                }
+                else{
+                    speechSynthesis.speak(speechSynthesisUtterance);
+                }
+
+                isPlaying = true;
+                updatePlayButtonIcon();
+            }
+        }
+
+        function updatePlayButtonIcon() {
+            const playButton = document.querySelector('.play-button');
+            if (isPlaying) {
+                playButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>`;
+            } else {
+                playButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>`;
+            }
+        }
+
+        function startRecording() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+                    mediaRecorder.onstop = () => {
+                        //  audioChunks;
+                        // You can process or send the audio data here
+                        console.log("audioChunks", audioChunks);
+                        audioChunks = []; // Clear for next recording
+                    };
+                    mediaRecorder.start();
+                    // Visually indicate that recording has started (optional)
+                    document.querySelector('.red-button').style.backgroundColor = 'darkred';
+                })
+                .catch(error => {
+                    console.error("Error accessing microphone:", error);
+                });
+        }
+
+        function stopRecording() {
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+                 document.querySelector('.red-button').style.backgroundColor = 'red';
+            }
+        }
+
+        function exitApp() {
+            //  Add your exit app logic here.
+            console.log("Exiting App");
+        }
+    </script>
+</body>
+</html>

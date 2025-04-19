@@ -1,0 +1,6 @@
+preffered: 
+
+1)Ngrok 
+reason :its infrasture ability to host from localhost to web functionality
+2) afraid.dns 
+reason: for its domain url providing infrasture

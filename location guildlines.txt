@@ -1,0 +1,7 @@
+preffered: please select and tick the checkbox below to determine 
+whether the choosen place is appropriate for replocation or ,setup
+
+1) is the place full of parking lots? yes /no
+2) is the place have a lot of cars passing by? yes/no
+3) is the place located next to prisions? yes /no (sometimes where appropriate
+and applicable)

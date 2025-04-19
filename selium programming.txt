@@ -1,0 +1,161 @@
+selium programming:
+rules
+...(means or)
+
+.rewrite things in reverse
+
+
+basic goal:(
+create a  programming langauge that works on the "or" "principal"
+example : writing a paragram...we dont use spacing but the "or" command
+
+i "or" have "or" a "or" cat
+which will print out : i have a cat
+
+
+basica goal 2:
+write things in reverse
+i.e instead of style="background-color;color:white"it will be 
+
+
+basic rule 3:
+when u write something then u are allowed to add something else.
+dont know what it means but u need to figure it :) lol
+
+code sample:
+write >>>
+the write function allows u to do somethinng : replaces javascript's
+<script>
+</script>
+almost like if..this then do this.also the arguments comein pairs like
+if u say green then that green must go to turn blue...then u 
+add another if statement then u are required to add another complimentry
+"do this"...the program wont work if u dont ...follow the above "syntax/rule"
+i.e change a of text color or something
+
+
+u also need to compliment: in order to execute the code
+syntax: complement:
+equivalent: printout("")
+
+
+symbols: for insert images:
+i.e syntax: symbol("");
+equivalent : img=src=""
+
+
+important number for importing :
+i.e important number numpy
+equivalent : import numpy
+
+
+when they is a wrong syntax entered ..the whole line is highlighted in black.
+
+sythenx: (2)
+explanation: enter the synthex (2) in order to to tell the program that u are done write the prograam
+equivalent to : exit() or return 0
+
+synthex: symbol
+explanation:this is how you comment in the program
+equivant to: // or <!--comment-->
+
+
+synthex: show imbalance
+explanation: this command shows the number of steps on the right and the number of steps on the left and if they arent equal then the code is deemed imperfect
+i.e 
+
+1|90
+sorry this code is imperfect ....
+
+synthex: if you love me
+explanation: this command replaces and acts as the if statement
+equivalent to : if
+
+sythenx:// 
+explaination : this commend whilist used in  other programming languages as a commemt
+not really shows a comment in selium but instead...allows an individual to see all the
+double mistypes i.e if i keyed in hello hello then this is flagged or shown
+
+sythex: gui
+explaination: this commend shows the selium programming "cheat sheet" on the rigthen
+side of the panel with the cheat sheet written in yellow on the above left top when
+the window panel is opened
+
+sythex: <stylish></stylish>
+explainantion: so this will feature and host all the commands as a place whereby
+all imports are 
+i.e  <stylish style this>
+import selium red wine: import tool for  using color/enabling color to be used and applied
+import word count : this allows scans the program texts under the <p></p> tags or tags
+and suggests/evaluates whether  a paragraph length is missing word length or packs a 
+puch
+import copy: enables the copy function
+import find: a tool that allows u too locate a keyword or code
+</stylish or style this>
+
+
+sythex: i dont understand this- or i dont under this
+exlaination-function: mmm...it prompts an ai to do a code review of the entire code
+base and fixes and touches up any errors.in collaboration with im confused which
+performs an undo function and runs the program code base to show what errors are
+shown in the command prompt
+
+sythex: <stylish> import copy</stylish>
+function:to enable the copy funcion
+
+sythemx: style-list
+function: mmm....shows and allows one to reuse already used style line codes in the
+already present in the consolole i.e 
+
+
+sythenx: style-line 2
+function: mmm....allows one to use two styles on the same line 
+equivalent to: <span></span>
+
+
+sythex: fa fa search
+function: allows one to search for and use fa-fa icons
+
+synthex: inspect
+function: takes to and highlists the line of code inputted or in the console
+using yellowish fait orange color and comes with the match double sythex
+
+sythex : match...done...increase...line(pushes words to the end of the line)...i cant see(returns back to the current /previous line u were working on)
+function: this /these functions allow u to do the following :
+
+how to use: highlight with ur cursor and and then enter the words "prompt"
+which will show u the 
+
+
+sythenx: im tired,<stylis>import im tired</stylish>
+function: saves work and logs of the console to in order to run debugging
+
+
+
+sythex: partners
+function : finds duplicate lines of code or words or paragraphs similiar to ..and errors
+
+sythenx:box
+function: 
+equivalent: <div></div>
+
+end goal1: license this programming tool: i.e if someone or institition
+makes to teach it they need to pay a licensable fee.
+consult with yatchts-security team/yatchts-os department(our software  enforcers) law"
+end goal2: sell the program on retail shelves or software platforms i.e applestore,
+google play etc...or our own
+end goal3: become like the linux alternative code base programming ide for linux
+and Yatchts OS or softwares
+endgoal4: make the program sythex intuive to use (by using everything words people
+common people use in order to foster easily adaptivability to the coding) in order
+to sell to primary kids and colors
+
+
+logic: behind the program mentality?: mmmm...the more a programmer or someoone has
+to do or complete the more they actually complete or do.so no granting anything for 
+granted
+who 
+
+
+nuts n bolts:
+to use colors u use the <stylish>import colos: blues;</stylish>

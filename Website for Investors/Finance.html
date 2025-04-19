@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Uncle.com</title>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<style>
+body {
+  font-family: Arial;
+  color: white;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+.right {
+  right: 0;
+  background-color: rgb(35, 119, 35);
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+table,th,tr{
+  border:1px solid white;
+  border-collapse: collapse;
+
+}
+.orange{
+  color:black;
+}
+/* .red{
+  color:blue;
+} */
+</style>
+
+
+
+</head>
+<body>
+  
+
+<div class="split left">
+  <div class="centered">
+    <img src="1.jpg" alt="driver figure" > 
+    <!-- style="position: absolute;top:0px;left:0px;" -->
+    <h2>Uncle: Finance</h2>
+    <p>Please enter your Investor Name and Surname.</p>
+    <!-- <button onclick="window.open('ledger.html','_blank','toolbar=no,scrollbar=no,resizable=no,top=150,left=150,height=2500,width=2500')">View Balance sheet</button> -->
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="investor name" />
+      <button type="submit">Search</button>
+  </form>
+  <div id="searchResults"></div>
+  
+  <script src="search.js"></script><br><br><br>
+  
+  <a href="main.html">
+    <input type="submit" value="Home">
+  </a>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <!-- <img src="praying mary.jpg" alt="Avatar man"> -->
+    <!-- <h2 style="position:absolute;top:-58px;left:10px;">Capital <span class="orange">Summary:</span></h2>      -->
+  <fieldset>
+    <table>
+      <!-- <th>Account Number</th>
+      <th>Amount</th>
+      <th>Trust Fund Duration</th>
+      <th>Status</th>
+  
+  
+      <tr>
+          <td>Jaden2023</td>
+          <td>R250/Per month or 10% per income</td>
+          <td>20Years</td>
+          <td>Account Active</td>
+          </tr> -->
+      
+  </table>
+  </fieldset>
+      <fieldset>
+        <h1>Available Funds:<br><span class="red">R 1000.00</span></h1>
+      </fieldset>
+      <p>Managed by:Uncle</p>
+  </div>
+</div>
+
+
+  
+  
+
+</body>
+</html> 
