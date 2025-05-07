@@ -1,0 +1,310 @@
+<!-- <?php
+session_start(); // Start PHP session
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Define the filename
+    $filename = "customers.txt";
+
+    // Get username and password from the form
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Check if the file exists and is readable
+    if (is_readable($filename)) {
+        // Read the contents of the customers.txt file
+        $fileContents = file_get_contents($filename);
+
+        // Explode the contents into an array of lines
+        $lines = explode(PHP_EOL, $fileContents);
+
+        // Loop through each line
+        foreach ($lines as $line) {
+            // Explode each line into username and password
+            $userData = explode(" ", $line);
+
+            // Check if the username and password match
+            if (trim($userData[0]) === $username && trim($userData[1]) === $password) {
+                // Authentication successful, redirect to the temporary website
+                header("Location:index paywall.php");
+                exit(); // Stop further execution
+            }
+        }
+    } else {
+        // Handle the case where the file doesn't exist or is not readable
+        echo "Error: Unable to read user data. Please try again later.";
+        exit(); // Stop further execution
+    }
+
+    // If no match is found, display an error message
+    $error = "Invalid username or password. Please try again.";
+}
+?> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.Yatchts-Tube.co.za</title>
+    <style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  /* background: black; */
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  background-image:url("https://images.unsplash.com/photo-1590272456521-1bbe160a18ce?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.login-container {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  color: #333;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+button {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #cc0000;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Style for the popup */
+.popup {
+    position: fixed;
+    bottom: -100%; /* Initially off-screen */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRvJgNpwbOM7ehytidwg2WayEcR2tztW-lJQ&s");
+    color: white;
+    padding: 20px;
+    transition: bottom 0.3s ease-in-out; /* Slide-up animation */
+}
+
+.popup-content {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Move close button to the far left */
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+
+/* Button style */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+<!-- <img src="recharge battery low 3.gif" alt="" height="100" width="100"> -->
+
+<!-- <h1 style="position:absolute;top:330px;left:9px;color:white;">help Yatchts Tube become Free</h1> -->
+<!-- <h1 style="position:absolute;top:380px;left:9px;color:white;">Donate 5$/$10000000</h1> -->
+<!-- <p style="position:absolute;top:420px;left:0px;color:blue;">www.donateyatchtstube.com</p> -->
+<!-- <h4 style="position:absolute;top:430px;left:9px;color:brown;">Donate=Earn a share <br> -->
+<!-- Guaranteed Yearly returns of 25%</h4> -->
+<!-- <h1 style="position:absolute;top:600px;left:600px;color:white;">video sharing | Chatting |TV</h1> -->
+<!-- <p style="position:absolute;top:600px;left:0px;color:white;"><u>Ai</u></p> -->
+<!-- <img src="https://static.vecteezy.com/system/resources/previews/000/581/681/large_2x/play-icon-vector-illustration.jpg" alt="" style="position:absolute;top:600px;left:600px;color:white;" height="90" width="90"> -->
+<!-- <p style="position:absolute;top:0px;left:9px;color:blue;">storage provided by:  github</p>
+<p style="position:absolute;top:20px;left:9px;color:blue;">url provided by:  afraidnds</p> -->
+<!-- <img src="recharge battery low 3.gif" style="position:absolute;top:20px;left:9px;color:blue;" height="80" width="80">url provided by:  afraidnds</img> -->
+<!-- <h2 style="position:absolute;top:30px;left:1000px;color:white;top:280px;">Place video order,before hand</h2> -->
+<!-- <table style="position:absolute;left:1000px;color:white;top:10px;">
+    <th>Requested video</th>
+    <th>Requested Reward</th>
+    <tr>
+        <td>Guardians of the galaxy</td>
+        <td>R30</td>
+        <td><button>provide</button</td>
+    </tr>
+    <tr>
+        <td>Guardians of the galaxy vol 2</td>
+        <td>R30</td>
+        <td><button>provide</button</td>
+    </tr>
+
+</table> -->
+<p style="position:absolute;top:0px;left:1000px;color:white;top:100px;left:150px;">Yatchts-Tube  <br>Enjoy the experience</p>
+<img style="position:absolute;top:0px;left:1050px;color:white;" height="100" width="100" src="data:image/jpeg;base64,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" alt="">
+<p style="position:absolute;top:0px;left:970px;color:yellow;">Users:10M</p>
+<!-- <p style="position:absolute;top:0px;left:370px;color:red;">Yatchtstube...creater|made with love and consideration for ADHD community</p> -->
+<p style="position:absolute;top:0px;left:3px;color:yellow;">We levy R50 a month for content creators</p>
+<p style="position:absolute;top:30px;left:1000px;color:yellow;top:200px;">passwords r subject to change on renewal day:learn more</p>
+<p style="position:absolute;top:30px;left:1000px;color:yellow;top:230px;">Help us save on storage costs by placing a video search<br>query before hand<br>so that we know which videos u <br>would like to watch<br>and which videos to store</p>
+<!-- <img src="80.png" alt="" height="100" width="100" style="position:absolute;top:280px;left:300px;"> -->
+<p style="position:absolute;top:30px;left:1000px;color:yellow;top:350px;left:420px;">Low on funds</p>
+<p style="position:absolute;top:30px;left:1000px;color:yellow;top:650px;left:420px;" title="Mint messaging subdivision of pink flower messaging system"><a href="" style="color:yellow;">Join mint messaging group?</a></p>
+<p style="position:absolute;top:650px;left:200px;color:yellow;;" title="Mint messaging subdivision of pink flower messaging system"><a href="" style="color:yellow;">? need a home nurse?</a></p>
+<!-- <p style="position:absolute;top:30px;left:1000px;color:yellow;top:350px;left:150px;" title="click to engage with">sign up with<br> Yatchts ai</p> -->
+
+    <!-- <input type="text" placeholder="Enter video name" style="position:absolute;left:1000px;color:white;"><a href="device/buy device.html" style="color:white;" title="www.yatchts 'n software">Order <Br>yatchts device</a></input> -->
+    <button style="position:absolute;top:400px;left:1050px;">Request</button>
+    <div class="login-container">
+    
+    
+       
+        <img src="https://files.catbox.moe/dl584t.JPG" alt="YouTube Logo" class="logo" height="100" width="100">
+        <h2 style="background-color:grey;color:yellow;"><span style="background-color:blue;color:white;">Yatchts Tube:</span></h2>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+            <input type="text" name="username" placeholder="Username" required>
+            <br><br>
+            <input type="password" name="password" placeholder="Password" required>
+            <br><br>
+            <input type="submit" value="Login">
+        </form>
+        <div>
+        <p style="color:red;">Don't have an account? </p>    <a href="">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Battery icon -->
+    <!-- <div class="battery-icon">
+        <img src="recharge battery low 3.gif" alt="Battery Icon" height="50" width="50">
+        <br>
+        <p style="color: white;"> Recharge website<br>($1)</p>
+        <p style="color: white;"> Website is Active.<br>Sufficient credits</p>
+        <p style="color: orange;"> Exchange rate.<br>11YT = R1</p>
+        <h1>Powered by Github</h1>
+        
+        <img src="microsoft.jpg" alt="Microsoft Logo">
+        <p style="color: white;">Website credits: 100 ($11)</p>
+        <a href="#">
+            <img src="heart 2.gif" alt="Heart Icon" height="30" width="30">
+        </a>
+    </div> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const colors = ['black']; // Primary colors
+            let currentIndex = 0; // Index of the current color
+
+            // Function to change the background color
+            function changeBackgroundColor() {
+                document.body.style.backgroundColor = colors[currentIndex]; // Set the background color
+                currentIndex = (currentIndex + 1) % colors.length; // Move to the next color
+            }
+
+            // Call the function to change background color every 2 seconds
+            setInterval(changeBackgroundColor, 2000); // Change color every 2 seconds
+        });
+    </script>
+    
+    <!-- <script>
+        function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Add your authentication logic here
+  // For demonstration purposes, a simple alert is used
+  alert(Login Attempt\nEmail: ${email}\nPassword: ${password});
+}
+    </script> -->
+    
+
+
+
+    <!-- Button to trigger the popup -->
+    <!-- <button onclick="openPopup()">Open Popup</button> -->
+
+    <!-- The popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>background:</h2>
+            <p>How Do you like this background</p>
+        </div>
+    </div>
+<script>
+ // Function to open the popup
+function openPopup() {
+    document.getElementById('popup').style.bottom = '0'; // Slide the popup up
+}
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById('popup').style.bottom = '-100%'; // Slide the popup down
+}
+
+// Wait for the page to load and then show the popup after 5 seconds
+window.onload = function() {
+    setTimeout(function() {
+        openPopup();
+    }, 5000); // Wait for 5 seconds before showing the popup
+};
+
+
+</script>
+</body>
+</html>
