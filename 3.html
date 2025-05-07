@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animation</title>
+  <style>
+    body {
+      background-image: url("https://th.bing.com/th/id/OIP.Gal8T40MNWTINM15QEuLAwHaLH?rs=1&pid=ImgDetMain");
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+
+    .tutorial-box {
+      display: none;
+      position: absolute;
+      top: 150px;
+      left: 700px;
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 2px solid white;
+      padding: 20px;
+      width: 400px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .tutorial-box img {
+      max-width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tutorial-box button {
+      margin: 10px 5px 0;
+      padding: 8px 16px;
+      background-color: #ffffff10;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .tutorial-box a {
+      color: lightblue;
+      display: block;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="logo 5.JPG" alt="logo" height="100" width="100">
+
+  <h1 style="position:absolute;top:0px;left:800px;">Anime</h1>   
+  <p style="position:absolute;top:50px;left:800px;">Please Click on the animation you are currently working on</p>                               
+
+  <table style="position:absolute;top:100px;left:850px;">
+    <tr>
+      <th>Anime</th>
+      <th>Contact Details</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>The Full Circle</td>
+      <td>ads@9animenetwork.com</td>
+      <td>Not being worked</td>
+      <td><button onclick="startTutorial()">Begin Work</button></td>
+    </tr>
+    <tr>
+      <td>Mass Suicide</td>
+      <td>ads@9animenetwork.com</td>
+      <td>Not being worked</td>
+      <td><button onclick="startTutorial()">Begin Work</button></td>
+    </tr>
+    <tr>
+      <td>25 Girls</td>
+      <td>ads@9animenetwork.com</td>
+      <td>Not being worked</td>
+      <td><button onclick="startTutorial()">Begin Work</button></td>
+    </tr>
+  </table>
+
+  <button style="position:absolute;top:300px;left:1000px;" onclick="startTutorial()">Begin</button>
+
+  <!-- Slideshow Tutorial -->
+  <div id="tutorialBox" class="tutorial-box">
+    <img id="slideImage" src="" alt="Tutorial Step" />
+    <p id="slideText"></p>
+    <button id="nextBtn" onclick="nextSlide()">Next</button>
+    <div id="finalStep" style="display: none;">
+      <a href="4.html">Click here to view full animation guide</a>
+      <button onclick="window.location.href='4.html'">Begin</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+      {
+       video: "points.mp4",
+        text: "Lesson 1: To animate, you can start by animating using dots..."
+      },
+      {
+        img: "scan0007.JPG",
+        text: "Quick Guide 2: Use line flows to block out your animation before refining..."
+      },
+      {
+        img: "https://cdn.pixabay.com/photo/2020/04/23/08/29/editing-5081764_1280.jpg",
+        text: "Quick Guide 3: Ready to animate? Cut the piece you'd like to animate into your first frame..."
+      },
+      {
+        img: "https://cdn.pixabay.com/photo/2018/01/16/07/57/question-mark-3087634_1280.jpg",
+        text: "to make mouths or animations appear smooth or realistic inverve them i.e reverse a speaking character mouth"
+      },
+      {
+        img: "https://cdn.pixabay.com/photo/2018/01/16/07/57/question-mark-3087634_1280.jpg",
+        text: "in order to make a a scene look etheral u need to use the colors dark brown and black"
+      },
+      {
+img:"",
+text:"use white blank papers i.e photocopy paper instead of ....lined or book paper for drawings or character illustrations",
+      },      {
+        img: "https://cdn.pixabay.com/photo/2018/01/16/07/57/question-mark-3087634_1280.jpg",
+        text: "Cool! That's it for now. Would you like to view the full animation guide?"
+      },
+      {
+        img: "https://cdn.pixabay.com/photo/2018/01/16/07/57/question-mark-3087634_1280.jpg",
+        text: "use our python program pixed animation to animator or edit images quickly and easily"
+      },
+
+    ];
+
+    let currentSlide = 0;
+
+    function startTutorial() {
+      currentSlide = 0;
+      document.getElementById("tutorialBox").style.display = "block";
+      updateSlide();
+    }
+
+    function nextSlide() {
+      currentSlide++;
+      if (currentSlide < slides.length) {
+        updateSlide();
+      } else {
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("finalStep").style.display = "block";
+      }
+    }
+
+    function updateSlide() {
+      document.getElementById("slideImage").src = slides[currentSlide].img;
+      document.getElementById("slideText").innerText = slides[currentSlide].text;
+    }
+  </script>
+<img src="ttt-removebg-preview.png" alt="">
+</body>
+</html>
