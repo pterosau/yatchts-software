@@ -1,0 +1,10 @@
+Note: If you dont do it now you might just as well will do it later anyway
+
+1) catching errors
+title: how to name a title
+generated Title : how to pick a video title
+
+2) use the last word or sentence as the first...
+
+title: amazing.good
+generated example title: good.amazing
