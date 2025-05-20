@@ -38,6 +38,40 @@ h1, h2, h3, p {
     width: 95%;
   }
 }
+
+
+ /* Basic styling for the loader */
+        #loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's on top of everything */
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey border */
+            border-top: 8px solid #3498db; /* Blue top border */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hide the loader initially */
+        #content-container {
+            display: none;
+        }
     </style>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
@@ -48,7 +82,19 @@ h1, h2, h3, p {
         <h1>Welcome to Our Team board</h1>
         <p>Meet our team that make everything possible.</p>
     </header>
-    
+     <div id="loader-container">
+        <div class="loader"></div>
+    </div>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate loading time (replace with your actual loading logic)
+            setTimeout(function() {
+                document.getElementById('loader-container').style.display = 'none';
+                document.getElementById('content-container').style.display = 'block';
+            }, 2000); // Adjust the time (in milliseconds) as needed
+        });
+    </script>
     <main>
         <section id="teams">
             <h2 style="background-color: blue;color:white;"> Team 0: Alpha <br>Consultants department</h2>
@@ -269,21 +315,34 @@ Design mobile application versions of our Software products</p>
 <li>make sure the llc is  constantly online</li>
 <li>creating buzz lastly be constanly online: like,comment,creating </li>
 
-<br>files up  (using fire lazer) backup team(denoted with blue team tag) meaning they understand the inner workers of </u>
-<p>role: work for the password manager team</p>
-<li>Use the constanly online platform to post whatever media,updates,news or content created on platforms</li>
-<li>make sure the llc is  constantly online</li>
-<li>creating buzz lastly be constanly online: like,comment,creating </li>
+<br>
+<h1><span style="background-color: orangered;">Files up  (using fire lazer) backup team(denoted with blue team tag) meaning they understand the inner workers of </span></u></h1>
+<p>role: backup files using the below backup procedures</p>
+<li><span style="background-color: orange;"></span>renaming backuped up files to filename-backed up i.e original unbacked up file name oranges |backup file oranges backed up.jpg</li>
+<li>making sure company documents and software properly loading on the Desktop</li>
+<li>prepares files for deletation</li>
 <li>analyze hardrive and or hardware health</li>|
 <li>Simulate whole backup structures...i.e recreating system paths like settings almost like the waybackmachine (no need for coding the whole thing u can simply see screenshot the whole thing and run it in a visualizer</li>|
 
 
 
-<br>Mobile or software development team </u>
+<br>
+
+<p style="background-color:yellow;color:grey;">Mobile or software development team</p>
 <p>Create mobible versions of the desktop apps</p>
 <li>Use the constanly online platform to post whatever media,updates,news or content created on platforms</li>
 <li>make sure the llc is  constantly online</li>
 <li>creating buzz lastly be constanly online: like,comment,creating </li>
+
+<h1>Lavender OS:</h1>
+<p>an experimental operating system</p>
+
+<p>roles: create instruction manual for lavender os,issue and design desgin tickets for the copy and paste feature or other</p>
+
+<p>how it makes money</p>
+<ul>
+    <li>charge people to enable the copy and paste feature <a href="read about the reason why on response app.txt">read about the reasons why on response app</a></li>
+</ul>
 
 
 
@@ -312,6 +371,7 @@ Design mobile application versions of our Software products</p>
    <hr>
    <p style="background-color: blue;color:white;"><u>HR department:</u></p>
    <p>Description and or role: </p>
+   <p>Prepare Books for booklets for tasks list for new in coming  employees or to create instruction manuals i.e what they are going to be doing rename files to back up move company files to desktop(they is jobs and they is real jobs)-this is one of them</p>
    <p>Hire pretty women...for the posing and pictures in order to increase LTD precived prestige</p>
    <p>inform people/software engineers by telling them about,the stock based reward system for early software developers/new software developers</p>
                  <p><U>sub department:Cheerleader</U></p>
@@ -325,10 +385,28 @@ Design mobile application versions of our Software products</p>
                  <p>dispense free perfume and toothbrushes to employees at regular intervals so that our employees smell fresh and clean</p>
                  <p>validate ltd presence by ,Constantly maintaining a public presence either by positing on various websites: product hunt,YouTube,Instagram,Facebook,whatsapp,TV,News</p>
                  <p>prepare coding interviews</p>
+
+                 <p><U>Auto USER-generator</U></p>
+                 <ul>generate content for platforms that users barely use ....ie book or article or any other product we launch essentially turning ...users into viewers instead even if they arent intrested in the application<Br>the knowledge of knowing that they is content will withheld their intrest examples of such tatics include facebook etc.</ul>
+
+
+                    <p><U>Language department :</U></p>
+                 <p>Explanation:each company should have its own langauge department a department responsible for Creating new lingo talk for the company either for marketing ,malicious or 
+enchanced user experience purposes i.e we lauched an ad campgain to We launched a TEST Pilot today
+*use the words Endorse instead of support</p>
+
+<li>Preview all documents are well written i.e they is capital sentences used in each word</li>
+<li>Creating new lingo talk for the compamy i.e Campgain add in exchange for Test Pilot <a href="">Please see our sample revised or revemed word list </a></li>
+
                  <p ><u>Contractors</u></p>
                  <p>role: find suitable suppliers for the company's needs/stock and inventory or manufacturing needs</p>
                  <p>Enlisted:</p>
                  <p>. mgmuffin modelling agency</p>
+
+
+              
+<li></li>
+
 <button  title="register your company to supply Yatchts-software">vist website</button>
 <p>Transportation:No supplier yet.Provide transport for company travel needs ie travelling of stock or easy buy fullfilment</p>
 <button title="na">vist website</button>
@@ -547,6 +625,7 @@ Design mobile application versions of our Software products</p>
 <h1 style="background-color: blue;color:white;">Investments department</h1>
 <ul>
     <li>Sustainable energy</li></ul>
+    <li>Servers</li></ul>
 </ul>
 <hr>
 <h1><span style="background-color:blue;color:white;">Corporate social responsibility:</span></h1>
