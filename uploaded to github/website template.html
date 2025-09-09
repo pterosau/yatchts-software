@@ -120,7 +120,17 @@ body{
   .download-btn{ font-size:20px; min-width:200px; padding:16px 20px;}
 }
 
+
+/* highlight effect when focused */
+input:focus {
+  outline: 3px solid blue;
+  box-shadow: 0 0 6px rgba(0,0,255,0.6);
+}
+
   </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="image.JPG">
 
 </head>
 <body>
@@ -153,17 +163,32 @@ body{
     </div>
   </main>
 
-  <script >
-    // Create and download a simple dummy installer file when the button is clicked.
-// This keeps it local and works without a server. Replace the content with
-// your real binary or link to a hosted file when ready.
-
+  <script>
 document.getElementById('downloadBtn').addEventListener('click', function (e) {
+  const ticketInput = document.querySelector('input[placeholder="Enter u*r ticket number"]');
+  const ticketCode = ticketInput.value.trim();
+
+  // Set your predetermined valid ticket number here:
+  const validTicket = "12345";  
+
+  if (ticketCode !== validTicket) {
+    // Block download, show red highlight
+    ticketInput.focus();
+    ticketInput.style.outline = "3px solid red";
+    ticketInput.style.boxShadow = "0 0 6px rgba(255,0,0,0.6)";
+    return; // stop here
+  }
+
+  // Reset style if valid
+  ticketInput.style.outline = "";
+  ticketInput.style.boxShadow = "";
+
   // Create a small text file to simulate an installer.
-  const installerName = 'single-browser-installer.txt'; // change to .zip / .exe when you have a real file
+  const installerName = 'single-browser-installer.txt'; 
   const content = [
     "Single Browser Installer",
-    "This is a placeholder installer file for the Single browser.",
+    "Valid Ticket Code: " + ticketCode,
+    "Thank you for using EasyBuy.",
     "Replace this with your real installer binary or provide a download URL."
   ].join('\n');
 
@@ -173,17 +198,15 @@ document.getElementById('downloadBtn').addEventListener('click', function (e) {
   a.href = url;
   a.download = installerName;
 
-  // Programmatically click to start download
   document.body.appendChild(a);
   a.click();
 
-  // cleanup
   setTimeout(() => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }, 150);
 
-  // Provide a small visual feedback
+  // feedback
   const btn = e.currentTarget;
   btn.textContent = 'DOWNLOADING...';
   btn.disabled = true;
@@ -192,19 +215,55 @@ document.getElementById('downloadBtn').addEventListener('click', function (e) {
     btn.disabled = false;
   }, 1200);
 });
+</script>
 
-
-
-  </script>
   <img src="image.JPG" alt="" style="position:absolute;top:50px;left:975px;">
-  <button style="position: absolute;top:183px;left:1020px;"><u>demo</u></button>
+  <button style="position: absolute;top:183px;left:1020px;" title="not, available"><u>demo</u></button>
   <input type="enter tick ur ticket number" style="position: absolute;top:151px;left:317px;" placeholder="Enter u*r ticket number">
 
-  <p style="position: absolute;top:650px;left:550px;">*Please vist easy buy to easybuy.ct.ws to purchase ur <u>ticket code</u>. :) easybuy ticket dispensing shop</p>
+<img src="inbox broswer screen shot_.JPG" alt="" style="position: absolute;top:200px;left:200px;" height="350" width="400">
+
+  <p style="position: absolute;top:650px;left:550px;">*Please vist easy buy to easy-buy.ct.ws to purchase ur <u>ticket code</u>. :) easybuy ticketing shop</p>
   <a href="single about.html">
-    <p style="position: absolute;top:650px;left:21px;color:black;">single about</p>
-    <p style="position: absolute;top:685px;left:1400px;color:black;">downloads: 17</p>
+    <p style="position: absolute;top:650px;left:21px;color:black;">ingle about</p>
+    
+  </a>
+  <!-- <img src="vstat.JPG" alt="" style="position: absolute;top:50px;left:1427px;"> -->
+  <i class="fa fa-star" style="position: absolute;top:30px;left:1330px;"></i>
+
+  <!-- <img src="puzzel.JPG" alt="" style="position: absolute;top:70px;left:1427px;"> -->
+<p style="position: absolute;top:650px;left:1427px;color:black;">UCT: 17</p>
+    <p style="position: absolute;top:15px;left:1414px;color:black;">Donate</p>
+          <!-- donate img -->
+    <img src="donate item.JPG" alt="" style="position:absolute;top:10px;left:1400px;" height="20">
+
+
+
+    <p style="position: absolute;top:10px;left:300px;">+</p>
+    <p style="position: absolute;top:10px;left:253px;">x</p>
+    <p style="position:absolute;top:-15px;left:100px;z-index:1;color:white;">→</p>
+    <p style="position:absolute;top:0px;left:200px;z-index:1;">←</p>
+
+  <hr style="position:absolute;top:0px;left:0px;background-color: blue;color:blue;border:none;border-radius: none;height: 10px;width: 1400px;">
+  <p style="position:absolute;top:-15px;left:500px;z-index:1;color:black;">www.single.chickenkiller.com</p>
+  <hr style="position:absolute;top:10px;left:0px;background-color: yellow;color:yellow;border:none;border-radius: none;height: 10px;width: 1400px;">
+
+  <img src="logo version 2.JPG" alt="" style="position: absolute;top:0px;left:1478px;border-radius: 50%;" height="23" width="23">
+  <img src="logo version 2.JPG" alt="" style="position: absolute;top:27px;left:1478px;border-radius: 50%;" height="23" width="23">
+
+  <hr style="position:absolute;top:0px;left:1510px;background-color: black;color:black;border:none;border-radius: none;height: 650px;width: 10px;">
+
+  <hr style="position:absolute;top:10px;left:0px;background-color: black;color:black;border:none;border-radius: none;height: 650px;width: 150px;">
+
+  <a href="https://pterosau.github.io/yatchts-software/">
+<p style="position: absolute;top:20px;left:0px;color:white;z-index: 1;">home</p>
   </a>
   
+  <p style="position: absolute;top:40px;left:0px;color:white;z-index:1;">more</p>
+  <p title="support" style="position: absolute;top:40px;left:105px;color:white;">+</p>
+
+  <hr style="position:absolute;top:667px;left:11px;background-color: brown;color:brown;border:none;border-radius: none;height: 10px;width: 10px;">
+  <hr style="position:absolute;top:667px;left:1px;background-color: black;color:black;border:none;border-radius: none;height: 10px;width: 10px;">
 </body>
 </html>
+
