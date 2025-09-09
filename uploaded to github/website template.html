@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Single — Download</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+  --bg: #ffffff;
+  --accent: #000000;
+  --btn-padding: 22px 36px;
+  --max-width: 800px;
+}
+
+*{box-sizing: border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--accent);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:24px;
+}
+
+/* page container */
+.page{
+  width:100%;
+  max-width:var(--max-width);
+  text-align:center;
+  position:relative;
+  margin: 0 auto;
+}
+
+/* small header top-left for branding */
+.brand{
+  position:absolute;
+  left:8px;
+  top:8px;
+}
+.brand-name{
+  font-weight:700;
+  letter-spacing:2px;
+  font-size:12px;
+}
+
+/* visual area */
+.visual{
+  margin-top:28px;
+  position:relative;
+  min-height:340px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* starburst top-right */
+.burst{
+  position:absolute;
+  top: -8px;
+  right: 48px;
+  width:86px;
+  height:86px;
+}
+
+/* arrow styling */
+.arrow{
+  width:160px;
+  height:auto;
+  display:block;
+  margin: 0 auto;
+}
+
+/* download area */
+.download-area{
+  margin-top:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+/* button */
+.download-btn{
+  font-weight:800;
+  font-size:28px;
+  letter-spacing:1px;
+  padding:var(--btn-padding);
+  background:transparent;
+  border:2px solid var(--accent);
+  border-radius:6px;
+  cursor:pointer;
+  min-width:240px;
+  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.download-btn:active{ transform: translateY(2px) }
+.download-btn:focus{
+  outline:none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* hint text */
+.hint{
+  margin:0;
+  font-size:12px;
+  color:#333;
+}
+
+/* responsive scaling for small screens */
+@media (max-width:420px){
+  .burst{ width:60px; right: 18px; top: -6px; }
+  .arrow{ width:120px; }
+  .download-btn{ font-size:20px; min-width:200px; padding:16px 20px;}
+}
+
+  </style>
+
+</head>
+<body>
+  <main class="page" role="main">
+    <header class="brand">
+      <span class="brand-name">SINGLE</span>
+    </header>
+
+    <div class="visual">
+      <!-- starburst (top-right) -->
+      <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,2 61,34 95,34 67,52 78,84 50,64 22,84 33,52 5,34 39,34"
+                 fill="#000"/>
+      </svg>
+
+      <!-- large arrow (center) -->
+      <svg class="arrow" viewBox="0 0 200 260" aria-hidden="true" role="img" >
+        <!-- shaft -->
+        <rect x="70" y="10" width="60" height="150" rx="4" ry="4" fill="#000"/>
+        <!-- arrow triangle -->
+        <polygon points="20,170 180,170 100,260" fill="#000"/>
+      </svg>
+    </div>
+
+    <div class="download-area">
+      <button id="downloadBtn" class="download-btn" aria-label="Download Single Browser installer">
+        DOWNLOAD
+      </button>
+      <p class="hint">Click to download the Single browser installer</p>
+    </div>
+  </main>
+
+  <script >
+    // Create and download a simple dummy installer file when the button is clicked.
+// This keeps it local and works without a server. Replace the content with
+// your real binary or link to a hosted file when ready.
+
+document.getElementById('downloadBtn').addEventListener('click', function (e) {
+  // Create a small text file to simulate an installer.
+  const installerName = 'single-browser-installer.txt'; // change to .zip / .exe when you have a real file
+  const content = [
+    "Single Browser Installer",
+    "This is a placeholder installer file for the Single browser.",
+    "Replace this with your real installer binary or provide a download URL."
+  ].join('\n');
+
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = installerName;
+
+  // Programmatically click to start download
+  document.body.appendChild(a);
+  a.click();
+
+  // cleanup
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 150);
+
+  // Provide a small visual feedback
+  const btn = e.currentTarget;
+  btn.textContent = 'DOWNLOADING...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'DOWNLOAD';
+    btn.disabled = false;
+  }, 1200);
+});
+
+
+
+  </script>
+  <img src="image.JPG" alt="" style="position:absolute;top:50px;left:975px;">
+  <button style="position: absolute;top:183px;left:1020px;"><u>demo</u></button>
+  <input type="enter tick ur ticket number" style="position: absolute;top:151px;left:317px;" placeholder="Enter u*r ticket number">
+
+  <p style="position: absolute;top:650px;left:550px;">*Please vist easy buy to easybuy.ct.ws to purchase ur <u>ticket code</u>. :) easybuy ticket dispensing shop</p>
+  <a href="single about.html">
+    <p style="position: absolute;top:650px;left:21px;color:black;">single about</p>
+    <p style="position: absolute;top:685px;left:1400px;color:black;">downloads: 17</p>
+  </a>
+  
+</body>
+</html>
