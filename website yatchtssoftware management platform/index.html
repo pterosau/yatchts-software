@@ -1,267 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trending & Tasks</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
 
-  /* Mini vertical tab */
-  .mini-tab {
-    width: 50px;
-    background-color: #111;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YatchtsSoftware — Management Platform.website.yatchtssoftware management platform.com</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --radius:16px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071026 0%, #081428 60%);color:#e6eef6}
+    .container{width:960px;max-width:94%;display:grid;grid-template-columns:420px 1fr;gap:28px;align-items:center}
+    .panel{background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.9));border-radius:var(--radius);padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#041022}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin-top:6px;font-size:13px}
 
-  .mini-tab img.logo {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-  }
+    form{margin-top:18px}
+    label.field{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type="email"]{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit;outline:none}
 
-  .mini-tab .icon {
-    font-size: 20px;
-    margin: 15px 0;
-    cursor: pointer;
-  }
+    .roles{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .role{flex:1 1 45%;min-width:160px;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;cursor:pointer;display:flex;gap:12px;align-items:center;transition:all .16s}
+    .role:hover{transform:translateY(-4px)}
+    .role input{display:none}
+    .role .icon{width:44px;height:44;border-radius:8px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .role .meta{line-height:1}
+    .role .meta .title{font-weight:600}
+    .role .meta .desc{font-size:12px;color:var(--muted)}
+    .role.selected{border-color:rgba(6,182,212,0.28);box-shadow:0 8px 30px rgba(6,182,212,0.06);background:linear-gradient(180deg, rgba(6,182,212,0.03), transparent)}
 
-  .mini-tab .settings {
-    margin-top: auto;
-    margin-bottom: 10px;
-  }
+    .actions{display:flex;gap:10px;margin-top:18px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:#041022}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-  /* Left panel (Trending feed) */
-  .left {
-    width: 350px;
-    background-color: #1a1a1a;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding: 1rem;
-    position: relative;
-  }
+    .preview{padding:24px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:240px}
+    .notice{color:var(--muted);font-size:13px}
+    .welcome{font-size:18px;margin-bottom:6px}
 
-  .trending-header {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
+    footer{margin-top:18px;color:var(--muted);font-size:12px}
 
-  .post {
-    background: #242424;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .post img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-  }
-
-  .post .author {
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-  }
-
-  /* Social media buttons under each post */
-  .social-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-  }
-
-  .social-buttons button {
-    background: purple;
-    border: none;
-    color: white;
-    padding: 0.3rem 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-
-  .social-buttons button i {
-    margin-right: 3px;
-  }
-
-  /* Bottom menu */
-  .bottom-menu {
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    background: black;
-    padding: 0.5rem 1rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    align-items: center;
-  }
-
-  .bottom-menu button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-
-  /* Right panel */
-  .right {
-    flex: 1;
-    background: linear-gradient(180deg, #b3e5fc, #e0f7fa);
-    color: #0f172a;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-
-  .card {
-    background: white;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  }
-
-  .card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  h1 {
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-</style>
+    @media (max-width:880px){.container{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
-<i class="fa fa-user-circle" style="position: absolute;top:0px;left:1430px;color:grey;"></i>
+  <div class="container">
+    <div class="panel">
+      <div class="brand">
+        <div class="logo">YS</div>
+        <div>
+          <h1>YatchtsSoftware — Management Platform</h1>
+          <p class="lead">Quick login — choose how you want to enter our platform.</p>
+        </div>
+      </div>
 
-<!-- Mini vertical tab -->
-<div class="mini-tab">
-  <img src="logo backed up.jpg" class="logo" alt="Logo">
-  <div class="icon"><i class="fa fa-bookmark"></i></div>
-  <div class="icon"><i class="fa fa-download"></i></div>
-  <div class="icon"><i class="fa fa-book"></i></div>
-  <div class="icon"><i class="fa fa-clock"></i></div>
-  <div class="icon"><i class="fa fa-file"></i></div>
-  <div class="icon"><i class="fa fa-terminal"></i></div>
-  <div class="icon"><i class="fa fa-language"></i></div>
-  <div class="icon"><i class="fa fa-file"></i></div>
-  <div class="settings icon"><i class="fa fa-cog"></i></div>
-</div>
+      <form id="entryForm" onsubmit="return false;">
+        <label class="field">Email address</label>
+        <input id="email" type="email" placeholder="you@domain.com" required />
 
-<!-- Left panel -->
-<div class="left">
-  <div class="trending-header">Trending - Social <i class="fa fa-home"></i></div>
+        <div style="margin-top:12px">
+          <label class="field">What are you here as?</label>
+          <div class="roles" id="roles">
 
-  <div class="post">
-    <img src="ui.PNG" alt="ALT">
-    <div class="author">Qasim Rashid, Esq.</div>
-    <p>Now that the final 20 Israeli hostages have been released...</p>
-    <div class="social-buttons">
-      <button><i class="fa fa-forward"></i>Reforward</button>
-      <button><i class="fa fa-share"></i>Reshare</button>
-      <button><i class="fa fa-star"></i>Star</button>
-      <button><i class="fa fa-bookmark"></i>Bookmark</button>
-      <button><i class="fa fa-ellipsis-h"></i></button>
+            <label class="role" data-value="worker">
+              <input type="radio" name="role" value="worker">
+              <div class="icon">W</div>
+              <div class="meta"><div class="title">Worker</div><div class="desc">I want to work / find tasks.</div></div>
+            </label>
+
+            <label class="role" data-value="musician">
+              <input type="radio" name="role" value="musician">
+              <div class="icon">M</div>
+              <div class="meta"><div class="title">Musican</div><div class="desc">I create music / audio content.</div></div>
+            </label>
+
+            <label class="role" data-value="coding-buddy">
+              <input type="radio" name="role" value="coding-buddy">
+              <div class="icon">CB</div>
+              <div class="meta"><div class="title">Coding‑buddy</div><div class="desc">Pair-programming, mentorship or collaboration.</div></div>
+            </label>
+
+            <label class="role" data-value="investor">
+              <input type="radio" name="role" value="investor">
+              <div class="icon">$</div>
+              <div class="meta"><div class="title">I'm here for Yatchts — Investor</div><div class="desc">I want to learn about investing or partnerships.</div></div>
+            </label>
+
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="enterBtn">Enter</button>
+          <input class="btn ghost" id="rememberBtn" placeholder="ticket code-xxxx">i</input>
+        </div>
+
+        <footer>Tip: choose the role that best matches what you want to do. You can change it later.</footer>
+      </form>
+    </div>
+
+    <div class="panel preview" id="preview">
+      <div class="welcome">Welcome — please sign in</div>
+      <div class="notice">After you pick a role and enter your email, we’ll show a tailored dashboard for that role. Your selection can be saved to speed up future visits.</div>
+      <div style="margin-top:16px;color:var(--muted);font-size:13px">No data leaves your browser in this demo — selections are stored in localStorage.</div>
     </div>
   </div>
 
-  <div class="post">
-    <img src="https://cdn.memes.com/up/71558571535638926/i/1759914923805.jpg" alt="ALT">
-    <div class="author">Yatchts-software-.</div>
-    <p>Ready for more?</p>
-    <div class="social-buttons">
-      <button><i class="fa fa-forward"></i>Reforward</button>
-      <button><i class="fa fa-share"></i>Reshare</button>
-      <button><i class="fa fa-star"></i>Star</button>
-      <button><i class="fa fa-bookmark"></i>Bookmark</button>
-      <button><i class="fa fa-ellipsis-h"></i></button>
-    </div>
-  </div>
+  <script>
+    const roles = Array.from(document.querySelectorAll('.role'));
+    const emailInput = document.getElementById('email');
+    const enterBtn = document.getElementById('enterBtn');
+    const rememberBtn = document.getElementById('rememberBtn');
+    const preview = document.getElementById('preview');
 
-    <div class="post">
-    <img src="https://th.bing.com/th/id/OSK.HERO0rE37h7uDYKI9Ysum776pwFbj06_Esl3m29HPPOzYV0?w=472&h=280&c=13&rs=2&o=6&dpr=1.3&pid=SANGAM" alt="ALT">
-    <div class="author">Microsoft -Cuts off windows 10 Support</div>
-    <p>I think that microsoft...</p>
-    <div class="social-buttons">
-      <button><i class="fa fa-forward"></i>Reforward</button>
-      <button><i class="fa fa-share"></i>Reshare</button>
-      <button><i class="fa fa-star"></i>Star</button>
-      <button><i class="fa fa-bookmark"></i>Bookmark</button>
-      <button><i class="fa fa-ellipsis-h"></i></button>
-    </div>
-  </div>
+    // role selection UI
+    roles.forEach(r => {
+      r.addEventListener('click', () => {
+        roles.forEach(x=>x.classList.remove('selected'));
+        r.classList.add('selected');
+        r.querySelector('input').checked = true;
+        updatePreview();
+      });
+    });
 
-  <!-- Bottom menu -->
-  <div class="bottom-menu">
-    <button><i class="fa fa-bars"></i></button>
-    <button>Login / Register</button>
-  </div>
-</div>
+    function getSelectedRole(){
+      const checked = document.querySelector('.role input:checked');
+      return checked ? checked.value : null;
+    }
 
-<!-- Right panel -->
-<div class="right">
-<p style="position:absolute;left:500px;"><span style="color:blue;">Refund4Freedom</span> / <span style="color:blue;">Demands</span> / <span style="color:blue;">Refunds</span> / <span style="color:blue;">Supporting Material</span> / <span style="color:blue;">Share!</span></p>
-  <h1>Dashboard</h1>
-<p> mini training session(or onboarding)</p>
-  <h2>Tasks</h2>
-  <div class="card">
-    <h3>Task 1: Design and submit a table</h3>
-    <p>
-      <input type="checkbox"> Share this campaign with friends and social media.
-    </p>
-    <input type="text" placeholder="Enter your code here" style="width: 100%; padding: 0.5rem;">
-  </div>
-  <div class="card">
-    <h3>Task 2: Meme Review</h3>
-    <p>Check this meme, write your feedback, and share it.</p>
-    <input type="text" placeholder="Your comments here..." style="width: 100%; padding: 0.5rem;">
-  </div>
+    function updatePreview(){
+      const role = getSelectedRole();
+      const email = emailInput.value || 'your email';
+      if(!role){
+        preview.innerHTML = '<div class="welcome">Welcome — please sign in</div><div class="notice">Choose a role on the left to see a tailored preview.</div>';
+        return;
+      }
+      let title = '';
+      let hint = '';
+      switch(role){
+        case 'worker': title = 'Worker dashboard'; hint = 'View tasks, apply, and connect with employers.'; break;
+        case 'musician': title = 'Musican dashboard'; hint = 'Upload tracks, collaborate, and manage gigs.'; break;
+        case 'coding-buddy': title = 'Coding‑buddy dashboard'; hint = 'Find pairing sessions, share repos, and mentor.'; break;
+        case 'investor': title = 'Investor dashboard'; hint = 'Review opportunities, contact founders, and track investments.'; break;
+      }
+      preview.innerHTML = `<div class="welcome">${title}</div><div class="notice">Signed in as <strong>${email}</strong></div><div style="margin-top:12px;color:var(--muted)">${hint}</div>`;
+    }
 
-  <h2>Manufacturers</h2>
-  <p>Some manufacturers helping bring campaigns and products to life:</p>
-  <div class="card">
-    <h3>Manufacturer A</h3>
-    <p>High-quality electronic devices for campaigns.</p>
-  </div>
-  <div class="card">
-    <h3>Manufacturer B</h3>
-    <p>Eco-friendly production of campaign materials and merch.</p>
-  </div>
-  <div class="card">
-    <h3>Manufacturer C</h3>
-    <p>Supports marketing and promotional items with fast delivery.</p>
-  </div>
+    // Enter action
+    enterBtn.addEventListener('click', ()=>{
+      const role = getSelectedRole();
+      const email = emailInput.value.trim();
+      if(!email){
+        alert('Please enter your email.');
+        emailInput.focus();
+        return;
+      }
+      if(!role){
+        alert('Please pick a role to continue.');
+        return;
+      }
+      // simulate login
+      preview.innerHTML = `<div class="welcome">Welcome, ${role.replace('-', ' ')}!</div><div class="notice">You are signed in as <strong>${email}</strong>. Loading your ${role} dashboard…</div>`;
+      // here you could redirect or load role-specific UI
+      // for demo, we show a small simulated panel after 700ms
+      setTimeout(()=>{
+        preview.innerHTML += `<div style="margin-top:16px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)">This is a demo view for the <strong>${role}</strong> role. Replace with the real dashboard for each role.</div>`;
+      },700);
+    });
 
-</div>
+    // remember button toggles localStorage saving
+    rememberBtn.addEventListener('click', ()=>{
+      const role = getSelectedRole();
+      const email = emailInput.value.trim();
+      if(!role || !email){
+        alert('Pick a role and enter an email first to remember.');
+        return;
+      }
+      localStorage.setItem('yatchts_user', JSON.stringify({email,role}));
+      rememberBtn.textContent = 'Saved ✓';
+      setTimeout(()=>rememberBtn.textContent = 'Remember me',1500);
+    });
 
+    // load saved if exists
+    window.addEventListener('load', ()=>{
+      const saved = localStorage.getItem('yatchts_user');
+      if(saved){
+        try{
+          const obj = JSON.parse(saved);
+          emailInput.value = obj.email || '';
+          const roleEl = document.querySelector(`.role input[value="${obj.role}"]`);
+          if(roleEl){ roleEl.checked = true; roleEl.closest('.role').classList.add('selected'); }
+          updatePreview();
+        }catch(e){/* ignore */}
+      }
+    });
 
+    // update preview when email changes
+    emailInput.addEventListener('input', updatePreview);
+  </script>
 
-
-<hr style="position: absolute;top:715px;left:0px;border:2px;height:30px;width: 7000px;color:white;background-color: white;" >
-<img src="camera assets.png" alt="" height="20" width="500" style="position: absolute;top:715px;left:1000px;">
+  
 </body>
 </html>
